@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Company.h"
+#include "EmployeeTracker.h"
 
 int main()
 {
@@ -11,14 +12,13 @@ int main()
     int option = 100;
     while (option != 0)
     {
-        std::cout << company.Name << "Employee Tracker!\n";
+        std::cout << "\n" << company.Name << " Employee Tracker!\n";
         std::cout << "\n\n*************************************";
         std::cout << "\n\t1.Add Employee.";
-        std::cout << "\n\t2.Display Employee.";
-        std::cout << "\n\t3.Search By id.";
-        std::cout << "\n\t4.Delete by Id.";
-        std::cout << "\n\t5.Edit Employee data.";
-        std::cout << "\n\t6.Display All Employees.";
+        std::cout << "\n\t2.Display Employee.";        
+        std::cout << "\n\t3.Delete Employee by Id.";
+        std::cout << "\n\t4.Edit Employee data.";
+        std::cout << "\n\t5.Display All Employees.";
         std::cout << "\n\t0.Exit";
         std::cout << "\n*************************************\n\n";
         std::cout << "\n\tEnter the choice: ";
@@ -26,26 +26,25 @@ int main()
 
         switch (option)
         {
+        case 0:
+            break;
         case 1:
             company.AddEmployee();
             break;
-        /*case 2:
+        case 2:
             company.DisplayEmployee();
             break;
         case 3:
-            company.SearchEmployeeById();
+            company.DeleteEmployee();
             break;
         case 4:
-            company.DeleteEmployeeById();
+            company.EditEmployee();
             break;
         case 5:
-            company.EditEmployeeById();
+            company.DisplayEmployees();
             break;
-        case 6:
-            company.DisplayAllEmployees();
-            break;*/
         default:
-            std::cout << "Invalid input.";
+            std::cout << "Invalid input." << std::endl;
             break;
         }
     }
