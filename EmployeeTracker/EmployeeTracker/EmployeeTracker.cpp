@@ -4,6 +4,11 @@
 
 int main()
 {
+    //  read in file from  %AppData%/EmployeeTracker
+    //  if none exists, ask for the company name. then create it below
+    //  if exists, then read in the file, create the company with the <CompanyName>.csv
+
+
     // Creating automatic storage object
     Company company = Company("CompanyX");
 
@@ -19,6 +24,7 @@ int main()
         std::cout << "\n\t3.Delete Employee by Id.";
         std::cout << "\n\t4.Edit Employee data.";
         std::cout << "\n\t5.Display All Employees.";
+        std::cout << "\n\t6.Save.";
         std::cout << "\n\t0.Exit";
         std::cout << "\n*************************************\n\n";
         std::cout << "\n\tEnter the choice: ";
@@ -42,6 +48,11 @@ int main()
             break;
         case 5:
             company.DisplayEmployees();
+            break;
+        case 6:
+            // save a file with <CompanyName>.csv in to %AppData%/EmployeeTracker
+            // The csv part will be the employee data.
+            //company.Save();
             break;
         default:
             std::cout << "Invalid input." << std::endl;
