@@ -13,5 +13,5 @@ public:
 		int Salary;
 		int Bonus;
 		void Display();
+		void Edit();
 };
-

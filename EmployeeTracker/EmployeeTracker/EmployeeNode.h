@@ -11,5 +11,6 @@ public:
 	Employee* EmployeeData;
 	EmployeeNode* Next;
 	void Display();
+	void Edit();
 };
 

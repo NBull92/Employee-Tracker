@@ -16,3 +16,8 @@ void EmployeeNode::Display()
 {
 	EmployeeData->Display();
 }
+
+void EmployeeNode::Edit()
+{
+	EmployeeData->Edit();
+}

@@ -25,13 +25,14 @@ void Company::AddEmployee()
 	//	Ask user for a name
 	std::cout << "\tPlease provide the employee's name: ";
 	std::string employeeName;
-	std::cin >> employeeName;
+	std::cin >> employeeName;	// this doesn't allow for spaces	// TODO: validate this	
+	//std::getline(std::cin, employeeName); // this jumps straight to asking for age.	// TODO: validate this
 	
 	//	Ask for age
 	std::cout << "\tPlease provide the employee's age: ";
 	int employeeAge;
 	std::cin >> employeeAge;	// TODO: validate this
-
+	
 	//	Ask for salary
 	std::cout << "\tPlease provide the employee's salary: ";
 	int employeeSalary;
@@ -71,7 +72,7 @@ void Company::DisplayEmployee()
 		return;
 	}
 
-	std::cout << "\tPlease provide the Id of the emplyee you wish to display: ";
+	std::cout << "\tPlease provide the Id of the employee you wish to display: ";
 	int id;
 	std::cin >> id;	// TODO: validate this
 
@@ -100,7 +101,7 @@ void Company::DeleteEmployee()
 		return;
 	}
 
-	std::cout << "\tPlease provide the Id of the emplyee you wish to display: ";
+	std::cout << "\tPlease provide the Id of the employee you wish to display: ";
 	int id;
 	std::cin >> id;	// TODO: validate this
 
@@ -134,6 +135,31 @@ void Company::DeleteEmployee()
 
 void Company::EditEmployee()
 {
+	if (_employeeList == nullptr)
+	{
+		std::cout << "\tThere is no employee data to edit." << std::endl;
+		return;
+	}
+
+	std::cout << "\tPlease provide the Id of the employee you wish to edit: ";
+	int id;
+	std::cin >> id;	// TODO: validate this
+
+	auto node = _employeeList;
+	while (node != nullptr)
+	{
+		if (node->EmployeeData->Id == id)
+		{
+			node->Edit();
+			return;
+		}
+		else
+		{
+			node = node->Next;
+		}
+	}
+
+	std::cout << "\tThere is no employee data with that Id." << std::endl;
 }
 
 void Company::DisplayEmployees()
