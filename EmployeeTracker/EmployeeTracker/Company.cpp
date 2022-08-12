@@ -220,6 +220,9 @@ void Company::DisplayEmployees()
 
 void Company::Save()
 {
+	//	maybe encapsulate this in another class that handles file saving. 
+	//	pass in this company as a parameter.
+
 	char* appdata;
 	size_t len;
 	errno_t err = _dupenv_s(&appdata, &len, "APPDATA");
