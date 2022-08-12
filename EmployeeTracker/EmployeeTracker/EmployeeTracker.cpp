@@ -4,16 +4,16 @@
 
 int main()
 {
-    //  read in file from  %AppData%/EmployeeTracker
-    //  if none exists, ask for the company name. then create it below
-    //  if exists, then read in the file, create the company with the <CompanyName>.csv
-
+    //  create a class that will look for a company file in %AppData%/EmployeeTracker
+    //  It must look for the %AppData%/EmployeeTracker directory
+    //  If this doesn't exist, then it should create it. And then create a new Compony object and return that. This must ask the user for a company name.
+    //  If the directory exists and there is no file. then create a new Compony object and return that. This must ask the user for a company name.
+    //  If there is a file, then read in the csv file and create a Company object based off of the files data and return that.
+    
 
     // Creating automatic storage object
     Company company = Company("CompanyX");
-
-    //  Get user input a number between 0 and X. X being the amount of options. For extensibility, let 0 be quit.
-    
+        
     int option = 100;
     while (option != 0)
     {
@@ -50,9 +50,7 @@ int main()
             company.DisplayEmployees();
             break;
         case 6:
-            // save a file with <CompanyName>.csv in to %AppData%/EmployeeTracker
-            // The csv part will be the employee data.
-            //company.Save();
+            company.Save();
             break;
         default:
             std::cout << "Invalid input." << std::endl;
@@ -60,14 +58,3 @@ int main()
         }
     }
 }
-
-//  A class for the company. This will be instantiated in the main. But if the app was real, it could be generic company employee tracker
-//  Create a linked list of employees. 
-//  - Try to show case linked list knowledge to traverse, delete a node within the list, search the list, reverse the list (if you want to see employees in desc name order etc.
-
-
-// A class for employee
-//  - Name
-//  - Age
-//  - Salary
-//  - Bonus

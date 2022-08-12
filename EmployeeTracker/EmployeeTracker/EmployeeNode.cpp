@@ -21,3 +21,8 @@ void EmployeeNode::Edit()
 {
 	EmployeeData->Edit();
 }
+
+std::string EmployeeNode::Print()
+{
+	return EmployeeData->Print();
+}

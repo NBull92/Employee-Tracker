@@ -1,6 +1,11 @@
 #include <iostream>
 #include "Employee.h"
 
+std::string Employee::IntToString(int value)
+{
+	return std::to_string(value);
+}
+
 Employee::Employee(int id, std::string name, int age, int salary, int bonusPercentage)
 {
 	Id = id;
@@ -83,4 +88,9 @@ void Employee::Edit()
 	std::cout << "\n\tThe updated Employe Values are: " << std::endl;
 
 	Display();
+}
+
+std::string Employee::Print()
+{
+	return IntToString(Id) + "," + Name + "," + IntToString(Age) + "," + IntToString(Salary) + "," + IntToString(Bonus);
 }

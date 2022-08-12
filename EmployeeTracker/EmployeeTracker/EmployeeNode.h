@@ -12,5 +12,6 @@ public:
 	EmployeeNode* Next;
 	void Display();
 	void Edit();
+	std::string Print();
 };
 
