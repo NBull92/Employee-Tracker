@@ -135,9 +135,7 @@ void Company::DisplayEmployee()
 		return;
 	}
 
-	std::cout << "\tPlease provide the Id of the employee you wish to display: ";
-	int id;
-	std::cin >> id;	// TODO: validate this
+	auto id = GetNumber("\tPlease provide the Id of the employee you wish to display: ");
 
 	auto node = _employeeList;
 	while (node != nullptr)
@@ -164,9 +162,7 @@ void Company::DeleteEmployee()
 		return;
 	}
 
-	std::cout << "\tPlease provide the Id of the employee you wish to display: ";
-	int id;
-	std::cin >> id;	// TODO: validate this
+	auto id = GetNumber("\tPlease provide the Id of the employee you wish to delete: ");
 
 	EmployeeNode* previous = nullptr;
 	auto node = _employeeList;
@@ -204,9 +200,7 @@ void Company::EditEmployee()
 		return;
 	}
 
-	std::cout << "\tPlease provide the Id of the employee you wish to edit: ";
-	int id;
-	std::cin >> id;	// TODO: validate this
+	auto id = GetNumber("\tPlease provide the Id of the employee you wish to edit: ");
 
 	auto node = _employeeList;
 	while (node != nullptr)
