@@ -6,6 +6,6 @@ private:
 	std::string GetString(const std::string& prompt);
 	bool IsPathExist(const std::string& s);
 public:
-	Company Create();
+	Company* Create();
 };
 

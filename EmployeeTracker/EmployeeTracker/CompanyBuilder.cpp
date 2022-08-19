@@ -3,6 +3,7 @@
 #include <filesystem>
 #include <sys/stat.h>
 #include "CompanyBuilder.h"
+#include "FileReader.h"
 
 namespace fs = std::filesystem;
 
@@ -38,7 +39,7 @@ bool CompanyBuilder::IsPathExist(const std::string& s)
     return (stat(s.c_str(), &buffer) == 0);
 }
 
-Company CompanyBuilder::Create()
+Company* CompanyBuilder::Create()
 {
     char* appdata;
     size_t len;
@@ -59,47 +60,14 @@ Company CompanyBuilder::Create()
         if (companyName == "")
         {
             companyName = GetString("\tPlease provide the company's name: ");
-            return Company(companyName);
+            return new Company(companyName);
         }
         else
         {
-            // Creating automatic storage object
-            Company company = Company(companyName);
+            Company* company = new Company(companyName);
             std::string filename = path + companyName + ext;
 
-            std::ifstream file;
-            file.open(filename);
-            if (file.is_open())
-            {
-                std::string str;
-                std::getline(file, str);
-                while (!file.eof())
-                {
-                    std::getline(file, str, ',');
-
-                    if (str.empty())
-                        continue;
-
-                    int id = stoi(str);
-
-                    std::getline(file, str, ',');
-                    std::string name = str;
-
-                    std::getline(file, str, ',');
-                    int age = stoi(str);
-
-                    std::getline(file, str, ',');
-                    int salary = stoi(str);
-
-                    std::getline(file, str);
-                    int bonus = stoi(str);
-
-                    Employee* employee = new Employee(id, name, age, salary, bonus);
-                    company.AddEmployee(employee);
-                }
-
-                file.close();
-            }
+            FileReader().Read(filename, company);
 
             return company;
         }
@@ -107,6 +75,6 @@ Company CompanyBuilder::Create()
     else
     {
         companyName = GetString("\tPlease provide the company's name: ");
-        return Company(companyName);
+        return new Company(companyName);
     }
 }

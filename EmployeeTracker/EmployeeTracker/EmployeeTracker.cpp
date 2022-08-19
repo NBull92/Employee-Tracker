@@ -7,12 +7,12 @@
 
 int main()
 {
-    Company company = CompanyBuilder().Create();
+    Company* company = CompanyBuilder().Create();
             
     int option = 100;
     while (option != 0)
     {
-        std::cout << "\n" << company.Name << " Employee Tracker!\n";
+        std::cout << "\n" << company->Name << " Employee Tracker!\n";
         std::cout << "\n\n*************************************";
         std::cout << "\n\t1.Add Employee.";
         std::cout << "\n\t2.Display Employee.";        
@@ -30,22 +30,22 @@ int main()
         case 0:
             break;
         case 1:
-            company.AddEmployee();
+            company->AddEmployee();
             break;
         case 2:
-            company.DisplayEmployee();
+            company->DisplayEmployee();
             break;
         case 3:
-            company.DeleteEmployee();
+            company->DeleteEmployee();
             break;
         case 4:
-            company.EditEmployee();
+            company->EditEmployee();
             break;
         case 5:
-            company.DisplayEmployees();
+            company->DisplayEmployees();
             break;
         case 6:
-            company.Save();
+            company->Save();
             break;
         default:
             std::cout << "Invalid input." << std::endl;
