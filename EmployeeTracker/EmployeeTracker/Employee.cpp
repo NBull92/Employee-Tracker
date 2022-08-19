@@ -1,6 +1,29 @@
 #include <iostream>
 #include "Employee.h"
 
+int Employee::GetNumber(const std::string& prompt)
+{
+	int result;
+	while (true)
+	{
+		std::cout << prompt;
+		std::cin >> result;	
+
+		if (std::cin.fail())
+		{
+			std::cout << "Enter a valid number!" << std::endl;
+			std::cin.clear();
+			std::cin.ignore(1000, '\n');
+		}
+		else
+		{
+			break;
+		}
+	}
+
+	return result;
+}
+
 std::string Employee::IntToString(int value)
 {
 	return std::to_string(value);
@@ -34,55 +57,42 @@ void Employee::Edit()
 {
 	std::cout << "\n\tThe employee's Name is currently: " << Name << ". Would you like to edit Name? (y/n)" << std::endl;
 	char answer;
-	std::cin >> answer;	// TODO: validate this
-
+	std::cin >> answer;
+	
 	if (answer == 'y')
 	{
 		std::cout << "\tPlease provide the employee's name: ";
 		std::string employeeName;
-		std::cin >> employeeName;	// this doesn't allow for spaces	// TODO: validate this	
-		//std::getline(std::cin, employeeName); // this jumps straight to asking for age.	// TODO: validate this
+		std::cin >> employeeName;
 
 		Name = employeeName;
 	}
 
 	answer = NULL;
 	std::cout << "\n\tThe Employee's Age is currently: " << Age << ". Would you like to edit Age? (y/n)" << std::endl;
-	std::cin >> answer;	// TODO: validate this
+	std::cin >> answer;
 
 	if (answer == 'y')
 	{
-		std::cout << "\tPlease provide the employee's age: ";
-		int employeeAge;
-		std::cin >> employeeAge;	// TODO: validate this
-
-		Age = employeeAge;
+		Age = GetNumber("\tPlease provide the employee's age: ");
 	}
 
 	answer = NULL;
 	std::cout << "\n\tThe Employee's Salary is currently: " << Salary << ". Would you like to edit Salary? (y/n)" << std::endl;
-	std::cin >> answer;	// TODO: validate this
+	std::cin >> answer;	
 
 	if (answer == 'y')
 	{
-		std::cout << "\tPlease provide the employee's salary: ";
-		int employeeSalary;
-		std::cin >> employeeSalary;	// TODO: validate this
-
-		Salary = employeeSalary;
+		Salary = GetNumber("\tPlease provide the employee's salary: ");
 	}
 
 	answer = NULL;
 	std::cout << "\n\tThe Employee's Bonus Percentage is currently: " << Bonus << ". Would you like to edit Bonus Percentage? (y/n)" << std::endl;
-	std::cin >> answer;	// TODO: validate this
+	std::cin >> answer;	
 
 	if (answer == 'y')
 	{
-		std::cout << "\tPlease provide the employee's bonus percentage: ";
-		int employeeBonus;
-		std::cin >> employeeBonus;	// TODO: validate this
-
-		Bonus = employeeBonus;
+		Bonus = GetNumber("\tPlease provide the employee's bonus percentage: ");
 	}
 
 	std::cout << "\n\tThe updated Employe Values are: " << std::endl;
