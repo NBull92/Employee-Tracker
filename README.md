@@ -10,4 +10,4 @@ You can then save this out to a CSV file (stored in %APPDATA%) and then read tha
 
 Created to showcase my C++ and rebuild that skill set.
 - Started off as a console application
-- Stretch goal is to make a GUI application. Most likely with QT.
+- Stretch goal is to make a GUI application. Most likely with QT or WinUI.
