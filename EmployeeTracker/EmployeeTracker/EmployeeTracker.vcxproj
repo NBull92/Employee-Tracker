@@ -105,6 +105,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalOptions>/FS %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -129,15 +130,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Company.cpp" />
+    <ClCompile Include="CompanyBuilder.cpp" />
     <ClCompile Include="Employee.cpp" />
     <ClCompile Include="EmployeeNode.cpp" />
     <ClCompile Include="EmployeeTracker.cpp" />
+    <ClCompile Include="FileReader.cpp" />
+    <ClCompile Include="FileWriter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Company.h" />
+    <ClInclude Include="CompanyBuilder.h" />
     <ClInclude Include="Employee.h" />
     <ClInclude Include="EmployeeNode.h" />
     <ClInclude Include="EmployeeTracker.h" />
+    <ClInclude Include="FileReader.h" />
+    <ClInclude Include="FileWriter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
