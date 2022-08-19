@@ -1,19 +1,14 @@
 #include <iostream>
+
 #include "Company.h"
+#include "CompanyBuilder.h"
 #include "EmployeeTracker.h"
+
 
 int main()
 {
-    //  create a class that will look for a company file in %AppData%/EmployeeTracker
-    //  It must look for the %AppData%/EmployeeTracker directory
-    //  If this doesn't exist, then it should create it. And then create a new Compony object and return that. This must ask the user for a company name.
-    //  If the directory exists and there is no file. then create a new Compony object and return that. This must ask the user for a company name.
-    //  If there is a file, then read in the csv file and create a Company object based off of the files data and return that.
-    
-
-    // Creating automatic storage object
-    Company company = Company("CompanyX");
-        
+    Company company = CompanyBuilder().Create();
+            
     int option = 100;
     while (option != 0)
     {

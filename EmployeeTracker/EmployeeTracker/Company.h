@@ -8,12 +8,14 @@ class Company
 private:
 	EmployeeNode* _employeeList;
     EmployeeNode* ReverseList();
+    EmployeeNode* TraverseList();
     std::string GetString(const std::string& prompt);
     int GetNumber(const std::string& prompt);
 public:
 	std::string Name;
 	Company(std::string name);
-	void AddEmployee();
+    void AddEmployee();
+    void AddEmployee(Employee* employee);
     void DisplayEmployee();
     void DeleteEmployee();
     void EditEmployee();

@@ -5,7 +5,6 @@
 
 using namespace std;
 
-
 EmployeeNode* Company::ReverseList()
 {
 	EmployeeNode* previous = nullptr;
@@ -15,6 +14,21 @@ EmployeeNode* Company::ReverseList()
 	{
 		auto next = current->Next;
 		current->Next = previous;
+		previous = current;
+		current = next;
+	}
+
+	return previous;
+}
+
+EmployeeNode* Company::TraverseList()
+{
+	EmployeeNode* previous = nullptr;
+	auto current = _employeeList;
+
+	while (current != nullptr)
+	{
+		auto next = current->Next;
 		previous = current;
 		current = next;
 	}
@@ -82,11 +96,10 @@ void Company::AddEmployee()
 	auto employeeSalary = GetNumber("\tPlease provide the employee's salary: ");
 	auto employeeBonus = GetNumber("\tPlease provide the employee's bonus percentage: ");
 
-	//	get last employee id.
 	Employee* newEmp = nullptr;
 	if (_employeeList != nullptr)
 	{
-		auto lastEmployee = ReverseList();
+		auto lastEmployee = TraverseList();
 		auto lastId = lastEmployee->EmployeeData->Id;
 		newEmp = new Employee(lastId+1, employeeName, employeeAge, employeeSalary, employeeBonus);
 		auto node = new EmployeeNode(newEmp);
@@ -99,8 +112,20 @@ void Company::AddEmployee()
 		_employeeList = node;
 	}
 
-	//	Print out employee "(Id) Name has been added".
 	std::cout << "\tEmployee: " << " (" << newEmp->Id << ") " << newEmp->Name << " added successfully." << std::endl;
+}
+
+void Company::AddEmployee(Employee* employee)
+{
+	auto lastEmployee = TraverseList();
+	if (lastEmployee == nullptr)
+	{
+		_employeeList = new EmployeeNode(employee);
+	}
+	else
+	{
+		lastEmployee->Next =  new EmployeeNode(employee);	
+	}
 }
 
 void Company::DisplayEmployee()
@@ -221,7 +246,7 @@ void Company::DisplayEmployees()
 void Company::Save()
 {
 	//	maybe encapsulate this in another class that handles file saving. 
-	//	pass in this company as a parameter.
+	//	pass in this company as a parameter.member
 
 	char* appdata;
 	size_t len;
@@ -253,11 +278,11 @@ void Company::Save()
 	}
 	if (file.fail())
 	{
-		std:cout << "Save unsuccessful!" << endl;
+		std::cout << "Save unsuccessful!" << endl;
 	}
 	else
 	{
-		std:cout << "Saved Successfully!" << endl;
+		std::cout << "Saved Successfully!" << endl;
 	}
 }
 
