@@ -1,6 +1,6 @@
 <h1>Employee Tracker</h1>
 
-Employee Tracker is a CRUD application built in C++ that allows you to create and company and keep track of employees.
+Employee Tracker is a CRUD application built in C++ that allows you to create a company and keep track of employees.
 
 You start off by creating your company, by passing in the name.
 
