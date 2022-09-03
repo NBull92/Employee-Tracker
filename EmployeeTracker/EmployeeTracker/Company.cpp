@@ -1,8 +1,9 @@
 #include <iostream>
+#include <string>
 #include "Company.h"
 #include "Employee.h"
 #include "FileWriter.h"
-
+#include "ConsoleUtils.h"
 
 EmployeeNode* Company::ReverseList()
 {
@@ -35,65 +36,14 @@ EmployeeNode* Company::TraverseList()
 	return previous;
 }
 
-std::string Company::GetString(const std::string& prompt)
-{
-	std::string result;
-	while (true)
-	{
-		//	Ask user for a name
-		std::cout << prompt;
-		std::cin >> result;	// this doesn't allow for spaces	// TODO: validate this	
-		//std::getline(std::cin, employeeName); // this jumps straight to asking for age.	// TODO: validate this
-		//std::cin.ignore(numeric_limits<streamsize>::max, '\n');
-
-		if (std::cin.fail())
-		{
-			std::cout << "Enter a valid string!" << std::endl;
-			std::cin.clear();
-			std::cin.ignore(1000, '\n');
-		}
-		else
-		{
-			break;
-		}
-	}
-
-	return result;
-}
-
-int Company::GetNumber(const std::string& prompt)
-{
-	int result;
-	while (true)
-	{
-		std::cout << prompt;
-		std::cin >> result;	// this doesn't allow for spaces	// TODO: validate this	
-		//std::getline(std::cin, employeeName); // this jumps straight to asking for age.	// TODO: validate this
-		//std::cin.ignore(numeric_limits<streamsize>::max, '\n');
-
-		if (std::cin.fail())
-		{
-			std::cout << "Enter a valid number!" << std::endl;
-			std::cin.clear();
-			std::cin.ignore(1000, '\n');
-		}
-		else
-		{
-			break;
-		}
-	}
-
-	return result;
-}
-
 Company::Company(std::string name) : Name(name), _employeeList(nullptr) { }
 
 void Company::AddEmployee()
 {
-	auto employeeName = GetString("\tPlease provide the employee's name: ");
-	auto employeeAge = GetNumber("\tPlease provide the employee's age: ");
-	auto employeeSalary = GetNumber("\tPlease provide the employee's salary: ");
-	auto employeeBonus = GetNumber("\tPlease provide the employee's bonus percentage: ");
+	auto employeeName = ConsoleUtils::GetString("\tPlease provide the employee's name: ", true);
+	auto employeeAge = ConsoleUtils::GetNumber("\tPlease provide the employee's age: ");
+	auto employeeSalary = ConsoleUtils::GetNumber("\tPlease provide the employee's salary: ");
+	auto employeeBonus = ConsoleUtils::GetNumber("\tPlease provide the employee's bonus percentage: ");
 
 	Employee* newEmp = nullptr;
 	if (_employeeList != nullptr)
@@ -135,7 +85,7 @@ void Company::DisplayEmployee()
 		return;
 	}
 
-	auto id = GetNumber("\tPlease provide the Id of the employee you wish to display: ");
+	auto id = ConsoleUtils::GetNumber("\tPlease provide the Id of the employee you wish to display: ");
 
 	auto node = _employeeList;
 	while (node != nullptr)
@@ -162,7 +112,7 @@ void Company::DeleteEmployee()
 		return;
 	}
 
-	auto id = GetNumber("\tPlease provide the Id of the employee you wish to delete: ");
+	auto id = ConsoleUtils::GetNumber("\tPlease provide the Id of the employee you wish to delete: ");
 
 	EmployeeNode* previous = nullptr;
 	auto node = _employeeList;
@@ -200,7 +150,7 @@ void Company::EditEmployee()
 		return;
 	}
 
-	auto id = GetNumber("\tPlease provide the Id of the employee you wish to edit: ");
+	auto id = ConsoleUtils::GetNumber("\tPlease provide the Id of the employee you wish to edit: ");
 
 	auto node = _employeeList;
 	while (node != nullptr)

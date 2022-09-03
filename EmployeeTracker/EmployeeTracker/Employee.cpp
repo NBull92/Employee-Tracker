@@ -1,28 +1,6 @@
 #include <iostream>
 #include "Employee.h"
-
-int Employee::GetNumber(const std::string& prompt)
-{
-	int result;
-	while (true)
-	{
-		std::cout << prompt;
-		std::cin >> result;	
-
-		if (std::cin.fail())
-		{
-			std::cout << "Enter a valid number!" << std::endl;
-			std::cin.clear();
-			std::cin.ignore(1000, '\n');
-		}
-		else
-		{
-			break;
-		}
-	}
-
-	return result;
-}
+#include "ConsoleUtils.h"
 
 std::string Employee::IntToString(int value)
 {
@@ -40,7 +18,7 @@ Employee::Employee(int id, std::string name, int age, int salary, int bonusPerce
 
 Employee::~Employee()
 {
-	std::cout << "\n\Decpnstructor called for: " << Name << std::endl;
+	std::cout << "\n\Deconstructor called for: " << Name << std::endl;
 }
 
 void Employee::Display()
@@ -74,7 +52,7 @@ void Employee::Edit()
 
 	if (answer == 'y')
 	{
-		Age = GetNumber("\tPlease provide the employee's age: ");
+		Age = ConsoleUtils::GetNumber("\tPlease provide the employee's age: ");
 	}
 
 	answer = NULL;
@@ -83,7 +61,7 @@ void Employee::Edit()
 
 	if (answer == 'y')
 	{
-		Salary = GetNumber("\tPlease provide the employee's salary: ");
+		Salary = ConsoleUtils::GetNumber("\tPlease provide the employee's salary: ");
 	}
 
 	answer = NULL;
@@ -92,7 +70,7 @@ void Employee::Edit()
 
 	if (answer == 'y')
 	{
-		Bonus = GetNumber("\tPlease provide the employee's bonus percentage: ");
+		Bonus = ConsoleUtils::GetNumber("\tPlease provide the employee's bonus percentage: ");
 	}
 
 	std::cout << "\n\tThe updated Employe Values are: " << std::endl;

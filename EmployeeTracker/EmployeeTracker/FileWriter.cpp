@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
+#include <filesystem>
 #include "FileWriter.h"
+namespace fs = std::filesystem;
 
 void FileWriter::Write(std::string companyName, EmployeeNode* employeeList)
 {
@@ -9,6 +11,7 @@ void FileWriter::Write(std::string companyName, EmployeeNode* employeeList)
 	errno_t err = _dupenv_s(&appdata, &len, "APPDATA");
 
 	std::string path = std::string(appdata) + "\\EmployeeTracker\\";
+	fs::create_directory(path);
 	std::string filename = path + companyName + ".csv";
 
 	std::ofstream file;
@@ -28,6 +31,7 @@ void FileWriter::Write(std::string companyName, EmployeeNode* employeeList)
 		}
 		file.close();
 	}
+
 	if (file.fail())
 	{
 		std::cout << "Save unsuccessful!" << std::endl;

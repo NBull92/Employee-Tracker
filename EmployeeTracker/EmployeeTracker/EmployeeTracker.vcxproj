@@ -131,6 +131,7 @@
   <ItemGroup>
     <ClCompile Include="Company.cpp" />
     <ClCompile Include="CompanyBuilder.cpp" />
+    <ClCompile Include="ConsoleUtils.cpp" />
     <ClCompile Include="Employee.cpp" />
     <ClCompile Include="EmployeeNode.cpp" />
     <ClCompile Include="EmployeeTracker.cpp" />
@@ -140,6 +141,7 @@
   <ItemGroup>
     <ClInclude Include="Company.h" />
     <ClInclude Include="CompanyBuilder.h" />
+    <ClInclude Include="ConsoleUtils.h" />
     <ClInclude Include="Employee.h" />
     <ClInclude Include="EmployeeNode.h" />
     <ClInclude Include="EmployeeTracker.h" />
